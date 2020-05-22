@@ -9,6 +9,8 @@ FUNCTION ZBC_EXCEL_2_INNER_TABLE.
 *"  EXCEPTIONS
 *"      FILE_OPEN_ERROR
 *"----------------------------------------------------------------------
+  types:
+    lty_c30k(30000) type c.  
 
   TYPE-POOLS:
     ole2.
@@ -32,9 +34,9 @@ FUNCTION ZBC_EXCEL_2_INNER_TABLE.
     lv_add_rows  TYPE i VALUE 3000.
 
   DATA:
-    lt_excel_tab     TYPE STANDARD TABLE OF zbc_char30000,
-    lw_excel_tab     TYPE zbc_char30000,
-    lw_excel_tab_tmp TYPE zbc_char30000.
+    lt_excel_tab     TYPE STANDARD TABLE OF lty_c30k,
+    lw_excel_tab     TYPE lty_c30k,
+    lw_excel_tab_tmp TYPE lty_c30k.
 
 
 *->����Excel object
@@ -53,7 +55,7 @@ FUNCTION ZBC_EXCEL_2_INNER_TABLE.
       #1            = pi_filename.
 
 *->ȡ��Sheet
-  if iv_sheetname is not INITIAL.
+  if pi_sheetname is not INITIAL.
   GET PROPERTY OF ole_workbook 'Worksheets' = ole_worksheets
     EXPORTING
       #1 = pi_sheetname.
