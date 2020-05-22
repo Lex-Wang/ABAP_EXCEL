@@ -12,10 +12,12 @@ FUNCTION ZBC_UPLOAD_EXCEL_OLE.
 *"  EXCEPTIONS
 *"      OPEN_FILE_ERR
 *"----------------------------------------------------------------------
+  types:
+    lty_c30K(30000) type c.
 
   DATA:
-    lt_tabc       TYPE STANDARD TABLE OF zbc_char30000,
-    lw_tabc       TYPE zbc_char30000,
+    lt_tabc       TYPE STANDARD TABLE OF lty_c30K,
+    lw_tabc       TYPE lty_c30K,
     lv_tabix      TYPE sy-tabix,
     lt_cell       TYPE STANDARD TABLE OF string,
     lw_cell       TYPE string,
